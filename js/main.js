@@ -1,11 +1,19 @@
-const subtrair = document.querySelector("#subtrair")
-const somar = document.querySelector("#somar")
-const braco = document.querySelector("#braco")
 
-somar.addEventListener("click", (evento) =>{
-    braco.value = parseInt(braco.value) + 1
+const controle = document.querySelectorAll("[data-controle]") // com classe devo usar .
+controle.forEach( (elemento) => {
+    elemento.addEventListener('click', (evento) => {
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode)
+    })
 })
 
-subtrair.addEventListener("click", (evento) => {
-    braco.value = parseInt(braco.value) - 1
-})
+function manipulaDados(operacao, controle) {
+    const peca = controle.querySelector("[data-contador]")
+    console.log(peca)
+
+    if (operacao === "-") {
+        peca.value = parseInt(peca.value) - 1
+    }
+    else {
+        peca.value = parseInt(peca.value) + 1
+    }
+}
